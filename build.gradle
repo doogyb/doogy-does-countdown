@@ -48,4 +48,5 @@ dependencies {
     implementation "io.ktor:ktor-serialization:$ktor_version"
     implementation "org.jetbrains.kotlinx:kotlinx-serialization-core:$kotlin_serialization"
     testImplementation "io.ktor:ktor-server-tests:$ktor_version"
+    implementation 'com.beust:klaxon:5.0.1'
 }

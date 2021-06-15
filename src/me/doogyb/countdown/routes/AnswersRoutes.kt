@@ -5,23 +5,33 @@ import io.ktor.http.*
 import io.ktor.response.*
 import io.ktor.routing.*
 import me.doogyb.countdown.models.toLetterAnswers
+import me.doogyb.countdown.models.toNumberAnswer
 
 fun Route.answersRouting() {
     route("/answers") {
 
         get("letters/{letters}") {
-            val letters = call.parameters["letters"]?.split("") ?: return@get call.respondText(
+            var letters = call.parameters["letters"]?.split("") ?: return@get call.respondText(
                 "Missing or malformed id",
                 status = HttpStatusCode.BadRequest
             )
-            val letterAnswers = letters.subList(1, letters.size-1).toLetterAnswers()
-            call.respond(letterAnswers.answers)
+            letters = letters.subList(1, letters.size-1)
+            if (letters.size > 9) {
+                return@get call.respondText(
+                    "Too many letters",
+                    status = HttpStatusCode.NotAcceptable
+                )
+            }
+            call.respond(letters.toLetterAnswers())
         }
-        get("numbers") {
-            return@get call.respondText(
-                "Not implemented yet",
-                status = HttpStatusCode.NotImplemented
+        get("numbers/{numbers}") {
+
+            val numbers = call.parameters["numbers"]?.split(",") ?: return@get call.respondText(
+                "Missing or malformed id",
+                status = HttpStatusCode.BadRequest
             )
+            val integers = numbers.map { it.toInt() }
+            call.respond(integers.toNumberAnswer())
         }
     }
 }
