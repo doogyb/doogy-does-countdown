@@ -2,12 +2,10 @@
 
 ---
 
-**Doogy Does Countdown** is a free online clone of the popular words and numbers puzzle gameshow [Countdown](https://en.wikipedia.org/wiki/Countdown_(game_show)).
-
+**Doogy Does Countdown** is a free online clone of the popular words and numbers puzzle gameshow [Countdown](https://en.wikipedia.org/wiki/Countdown_(game_show)).<br>
 This particular repository is for the backend, which was my first foray into creating a simple REST API using Kotlin.
 
-You can find the repository for the frontend [here](https://github.com/doogyb)
-
+You can find the repository for the frontend [here](https://github.com/doogyb)<br>
 You can find a hosted version of the game [here](https://doogyb.me)
 
 ## Installation
@@ -25,7 +23,6 @@ To install and run a version of this backend, do the following:
 
 You can then query the following endpoints using GET requests:
 ```
-
 # Random generator
 
 # random vowel generation
@@ -60,12 +57,12 @@ You can then query the following endpoints using GET requests:
 
 The letters endpoint returns a json dictionary where the key is the length of the words and the value is the list of words that can be made from the given letters. I've ommitted a lot of answers to conserve screen space.
 
-`/answers/letters/{retainsit}`
+`/answers/letters/retainsit`
 
 ```json
 {
-   "5":[...],
-   "6":[...],
+   "5":["..."],
+   "6":["..."],
    "7":[
       "airiest",
       "anestri",
@@ -75,7 +72,7 @@ The letters endpoint returns a json dictionary where the key is the length of th
       "asterin",
       "atenist",
       "attires",
-      ...
+      "..."
    ],
    "8":[
       "antritis",
